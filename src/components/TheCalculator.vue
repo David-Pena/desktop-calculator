@@ -1,16 +1,17 @@
 <script setup lang="ts">
+import { OPERATIONS_MAP, Operator } from "../utils/constants";
 import { ref } from "vue";
 
 const lastOperation = ref("");
 const currentValue = ref("");
 const previousValue = ref("");
-const currentOperator = ref("");
+const currentOperator = ref<Operator>("");
 
 const handleNumberClick = (number: string) => {
   currentValue.value += number;
 };
 
-const handleOperatorClick = (operator: string) => {
+const handleOperatorClick = (operator: Operator) => {
   if (currentValue.value) {
     if (previousValue.value && currentOperator.value) {
       // If there's already a previous value and operator, compute the result
@@ -35,22 +36,7 @@ const computeResult = () => {
   if (previousValue.value && currentValue.value && currentOperator.value) {
     const prev = parseFloat(previousValue.value);
     const curr = parseFloat(currentValue.value);
-    let result = 0;
-
-    switch (currentOperator.value) {
-      case "+":
-        result = prev + curr;
-        break;
-      case "-":
-        result = prev - curr;
-        break;
-      case "*":
-        result = prev * curr;
-        break;
-      case "/":
-        result = prev / curr;
-        break;
-    }
+    let result = OPERATIONS_MAP[currentOperator.value](prev, curr);
 
     lastOperation.value = `${previousValue.value} ${currentOperator.value} ${currentValue.value} =`;
 
