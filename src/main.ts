@@ -10,7 +10,7 @@ const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 350,
-    height: 550,
+    height: 650,
     resizable: false,
     backgroundColor: "#000807",
     webPreferences: {
