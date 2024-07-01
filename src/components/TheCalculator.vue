@@ -2,6 +2,7 @@
 import { OPERATIONS_MAP, Operator } from "../utils/constants";
 import { ref } from "vue";
 import Box from "./Box.vue";
+import Display from "./Display.vue";
 
 const lastOperation = ref("");
 const currentValue = ref("");
@@ -55,12 +56,7 @@ const computeResult = () => {
 
 <template>
   <div class="w-full mt-5">
-    <div class="flex flex-col items-end">
-      <p class="text-[10px] text-primary">
-        {{ lastOperation || 0 }}
-      </p>
-      <p class="text-4xl">{{ currentValue || 0 }}</p>
-    </div>
+    <Display :current-value="currentValue || '0'" :lastest-operation="lastOperation || '0'" />
     <div class="bg-secondary h-[350px] mt-3 rounded-xl">
       <div id="numbers-box" class="flex flex-col py-8 px-5">
         <div class="flex justify-around items-center">
