@@ -53,7 +53,13 @@ const computeResult = () => {
     }
 
     lastOperation.value = `${previousValue.value} ${currentOperator.value} ${currentValue.value} =`;
-    currentValue.value = result.toFixed(2);
+
+    // Format the result to show up to 2 decimal places, but only if necessary
+    currentValue.value = result.toLocaleString(undefined, {
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 2,
+    });
+
     previousValue.value = "";
     currentOperator.value = "";
   }
@@ -63,8 +69,10 @@ const computeResult = () => {
 <template>
   <div class="w-full mt-5">
     <div class="flex flex-col items-end">
-      <p class="text-[11px] text-primary" style="letter-spacing: 1px">{{ lastOperation }}</p>
-      <p class="text-5xl">{{ currentValue }}</p>
+      <p class="text-[10px] text-primary">
+        {{ lastOperation || 0 }}
+      </p>
+      <p class="text-4xl">{{ currentValue || 0 }}</p>
     </div>
     <div class="bg-secondary h-[350px] mt-3 rounded-xl">
       <div id="numbers-box" class="flex flex-col py-8 px-5">
@@ -74,10 +82,10 @@ const computeResult = () => {
             <span class="m-auto">AC</span>
           </div>
           <div class="flex bg-lightdark p-3 rounded-xl w-12">
-            <div><span class="m-auto">+-</span></div>
+            <span class="m-auto">+-</span>
           </div>
           <div class="flex bg-lightdark p-3 rounded-xl w-12">
-            <div><span class="m-auto">%</span></div>
+            <span class="m-auto">%</span>
           </div>
           <div class="flex bg-terciary p-3 rounded-xl w-12" @click="handleOperatorClick('+')">
             <span class="text-xl m-auto">+</span>
