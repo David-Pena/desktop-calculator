@@ -14,7 +14,9 @@ const emit = defineEmits(["pressed"]);
 
 <template>
   <div
-    :class="`flex bg-${isOperator ? 'terciary' : 'lightdark'} p-3 rounded-xl w-12`"
+    :class="`flex cursor-pointer bg-${
+      isOperator ? 'terciary' : 'lightdark'
+    } p-3 rounded-xl w-12`"
     @click="() => emit('pressed', value)"
   >
     <span class="m-auto">{{ value }}</span>

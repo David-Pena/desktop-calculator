@@ -60,18 +60,10 @@ const computeResult = () => {
     <div class="bg-secondary h-[350px] mt-3 rounded-xl">
       <div id="numbers-box" class="flex flex-col py-8 px-5">
         <div class="flex justify-around items-center">
-          <div class="flex bg-lightdark p-3 rounded-xl w-12" @click="handleClear">
-            <span class="m-auto">AC</span>
-          </div>
-          <div class="flex bg-lightdark p-3 rounded-xl w-12">
-            <span class="m-auto">+-</span>
-          </div>
-          <div class="flex bg-lightdark p-3 rounded-xl w-12">
-            <span class="m-auto">%</span>
-          </div>
-          <div class="flex bg-terciary p-3 rounded-xl w-12" @click="handleOperatorClick('+')">
-            <span class="text-xl m-auto">+</span>
-          </div>
+          <Box value="AC" @pressed="(evt) => handleNumberClick(evt)" />
+          <Box value="±" @pressed="(evt) => handleNumberClick(evt)" />
+          <Box value="%" @pressed="(evt) => handleNumberClick(evt)" />
+          <Box value="+" @pressed="(evt) => handleOperatorClick(evt)" is-operator />
         </div>
 
         <div class="flex justify-around mt-2">
