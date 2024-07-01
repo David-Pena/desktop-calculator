@@ -6,11 +6,12 @@
     </p>
 
     <TheCalculator />
+
+    <TheFooter />
   </main>
 </template>
 
 <script setup>
 import TheCalculator from "./components/TheCalculator.vue";
-
-console.log('👋 This message is being logged by "App.vue", included via Vite');
+import TheFooter from "./components/TheFooter.vue";
 </script>
