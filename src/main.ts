@@ -12,9 +12,11 @@ const createWindow = () => {
     width: 350,
     height: 650,
     resizable: false,
+    minWidth: 350,
+    minHeight: 650,
     backgroundColor: "#000807",
     webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
+      preload: path.join(__dirname, "preload.ts"),
     },
   });
 

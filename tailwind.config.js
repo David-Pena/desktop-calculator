@@ -8,7 +8,8 @@ module.exports = {
         primary: '#31A2AA',
         secondary: '#061215',
         terciary: '#105055',
-        quaternary: '#000605'
+        quaternary: '#000605',
+        lightdark: '#0B171A',
       }
     },
   },

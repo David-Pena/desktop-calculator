@@ -30,4 +30,10 @@ import { createApp } from "vue";
 import App from "./App.vue";
 import "./index.css";
 
-createApp(App).mount("#app");
+import { OhVueIcon, addIcons } from "oh-vue-icons";
+import * as HeIcons from "oh-vue-icons/icons/hi";
+
+const heroIcons = Object.values({ ...HeIcons });
+addIcons(...heroIcons);
+
+createApp(App).component("HeroIcon", OhVueIcon).mount("#app");

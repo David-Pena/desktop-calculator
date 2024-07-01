@@ -1,7 +1,7 @@
 <template>
   <main>
-    <h1 class="text-lg font-semibold text-center">This is a sample calculator</h1>
-    <p class="text-xs text-center">
+    <h1 class="text-md font-semibold text-center">This is a sample calculator</h1>
+    <p class="text-[10px] text-center">
       Made with Vue3 + Electron Forge (vite-typescript template)
     </p>
 
