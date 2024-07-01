@@ -1,13 +1,11 @@
 <script setup lang="ts">
-withDefaults(
-  defineProps<{
-    value: string;
-    isOperator: boolean;
-  }>(),
-  {
-    isOperator: false,
-  }
-);
+const props = defineProps({
+  value: String,
+  isOperator: {
+    type: Boolean,
+    default: false,
+  },
+});
 
 const emit = defineEmits(["pressed"]);
 </script>
@@ -15,8 +13,8 @@ const emit = defineEmits(["pressed"]);
 <template>
   <div
     :class="`flex cursor-pointer bg-${
-      isOperator ? 'terciary' : 'lightdark'
-    } p-3 rounded-xl w-12`"
+      props.isOperator ? 'terciary' : 'lightdark'
+    } p-3 rounded-xl w-12 hover:scale-125 ease-in-out transition-all`"
     @click="() => emit('pressed', value)"
   >
     <span class="m-auto">{{ value }}</span>
