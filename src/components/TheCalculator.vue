@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { OPERATIONS_MAP, Operator } from "../utils/constants";
 import { ref } from "vue";
+import Box from "./Box.vue";
 
 const lastOperation = ref("");
 const currentValue = ref("");
@@ -62,7 +63,6 @@ const computeResult = () => {
     </div>
     <div class="bg-secondary h-[350px] mt-3 rounded-xl">
       <div id="numbers-box" class="flex flex-col py-8 px-5">
-        <!-- Row AC +- % + -->
         <div class="flex justify-around items-center">
           <div class="flex bg-lightdark p-3 rounded-xl w-12" @click="handleClear">
             <span class="m-auto">AC</span>
@@ -77,65 +77,33 @@ const computeResult = () => {
             <span class="text-xl m-auto">+</span>
           </div>
         </div>
-        <!-- Row 7 8 9 - -->
+
         <div class="flex justify-around mt-2">
-          <div class="flex bg-lightdark p-3 rounded-xl w-12" @click="handleNumberClick('7')">
-            <span class="m-auto">7</span>
-          </div>
-          <div class="flex bg-lightdark p-3 rounded-xl w-12" @click="handleNumberClick('8')">
-            <span class="m-auto">8</span>
-          </div>
-          <div class="flex bg-lightdark p-3 rounded-xl w-12" @click="handleNumberClick('9')">
-            <span class="m-auto">9</span>
-          </div>
-          <div class="flex bg-terciary p-3 rounded-xl w-12" @click="handleOperatorClick('-')">
-            <span class="text-xl m-auto">-</span>
-          </div>
+          <Box value="7" @pressed="(evt) => handleNumberClick(evt)" />
+          <Box value="8" @pressed="(evt) => handleNumberClick(evt)" />
+          <Box value="9" @pressed="(evt) => handleNumberClick(evt)" />
+          <Box value="-" @pressed="(evt) => handleOperatorClick(evt)" is-operator />
         </div>
-        <!-- Row 4 5 6 * -->
+
         <div class="flex justify-around mt-2">
-          <div class="flex bg-lightdark p-3 rounded-xl w-12" @click="handleNumberClick('4')">
-            <span class="m-auto">4</span>
-          </div>
-          <div class="flex bg-lightdark p-3 rounded-xl w-12" @click="handleNumberClick('5')">
-            <span class="m-auto">5</span>
-          </div>
-          <div class="flex bg-lightdark p-3 rounded-xl w-12" @click="handleNumberClick('6')">
-            <span class="m-auto">6</span>
-          </div>
-          <div class="flex bg-terciary p-3 rounded-xl w-12" @click="handleOperatorClick('*')">
-            <span class="text-xl m-auto">*</span>
-          </div>
+          <Box value="4" @pressed="(evt) => handleNumberClick(evt)" />
+          <Box value="5" @pressed="(evt) => handleNumberClick(evt)" />
+          <Box value="6" @pressed="(evt) => handleNumberClick(evt)" />
+          <Box value="*" @pressed="(evt) => handleOperatorClick(evt)" is-operator />
         </div>
-        <!-- Row 1 2 3 / -->
+
         <div class="flex justify-around mt-2">
-          <div class="flex bg-lightdark p-3 rounded-xl w-12" @click="handleNumberClick('1')">
-            <span class="m-auto">1</span>
-          </div>
-          <div class="flex bg-lightdark p-3 rounded-xl w-12" @click="handleNumberClick('2')">
-            <span class="m-auto">2</span>
-          </div>
-          <div class="flex bg-lightdark p-3 rounded-xl w-12" @click="handleNumberClick('3')">
-            <span class="m-auto">3</span>
-          </div>
-          <div class="flex bg-terciary p-3 rounded-xl w-12" @click="handleOperatorClick('/')">
-            <span class="text-xl m-auto">/</span>
-          </div>
+          <Box value="1" @pressed="(evt) => handleNumberClick(evt)" />
+          <Box value="2" @pressed="(evt) => handleNumberClick(evt)" />
+          <Box value="3" @pressed="(evt) => handleNumberClick(evt)" />
+          <Box value="/" @pressed="(evt) => handleOperatorClick(evt)" is-operator />
         </div>
-        <!-- Row 00 0 . = -->
+
         <div class="flex justify-around mt-2">
-          <div class="flex bg-lightdark p-3 rounded-xl w-12" @click="handleNumberClick('00')">
-            <span class="m-auto">00</span>
-          </div>
-          <div class="flex bg-lightdark p-3 rounded-xl w-12" @click="handleNumberClick('0')">
-            <span class="m-auto">0</span>
-          </div>
-          <div class="flex bg-lightdark p-3 rounded-xl w-12" @click="handleNumberClick('.')">
-            <span class="m-auto">.</span>
-          </div>
-          <div class="flex bg-terciary p-3 rounded-xl w-12" @click="computeResult">
-            <span class="text-xl m-auto">=</span>
-          </div>
+          <Box value="00" @pressed="(evt) => handleNumberClick(evt)" />
+          <Box value="0" @pressed="(evt) => handleNumberClick(evt)" />
+          <Box value="." @pressed="(evt) => handleNumberClick(evt)" />
+          <Box value="=" @pressed="computeResult" is-operator />
         </div>
       </div>
     </div>
